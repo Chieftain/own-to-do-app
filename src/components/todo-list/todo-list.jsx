@@ -16,25 +16,15 @@ export const TodoList = ({todoItems, setTodoItems, completedOnly, uncompletedOnl
         setTodoItems(newTodoItems);
     }
 
+    const generateTodoItem = (item, index) => <TodoItem key={`${id}-${index}`} item={item} index={index}
+                                             handleChange={() => handleChange(index)}
+                                             handleDelete={() => deleteItem(index)}
+    />
+
     return <ul>
         {/*key here isn't the best solution, ideally I'd use something like uuid*/}
-        {!completedOnly && !uncompletedOnly && todoItems.map((item, index) => (
-            <TodoItem key={`${id}-${index}`} item={item} index={index}
-                      handleChange={() => handleChange(index)}
-                      handleDelete={() => deleteItem(index)}
-            />
-        ))}
-        {completedOnly && todoItems.map((item, index) => item.completed && (
-            <TodoItem key={`${id}-${index}`} item={item} index={index}
-                      handleChange={() => handleChange(index)}
-                      handleDelete={() => deleteItem(index)}
-            />
-        ))}
-        {uncompletedOnly && todoItems.map((item, index) => !item.completed && (
-            <TodoItem key={`${id}-${index}`} item={item} index={index}
-                      handleChange={() => handleChange(index)}
-                      handleDelete={() => deleteItem(index)}
-            />
-        ))}
+        {!completedOnly && !uncompletedOnly && todoItems.map((item, index) => generateTodoItem(item, index))}
+        {completedOnly && todoItems.map((item, index) => item.completed && generateTodoItem(item, index))}
+        {uncompletedOnly && todoItems.map((item, index) => !item.completed && generateTodoItem(item, index))}
     </ul>
 }
