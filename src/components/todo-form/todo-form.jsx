@@ -36,6 +36,7 @@ export const TodoForm = () => {
             });
             setTodoItems(newTodoItems);
             setInputValue('');
+            setIsEdited(false)
         }
 
         if (task && !isEdited) {
