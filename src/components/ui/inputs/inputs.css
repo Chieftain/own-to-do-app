@@ -1,0 +1,30 @@
+.input[type='text'] {
+    padding: 3px 7px;
+    border: none;
+    border-bottom: 1px solid #282c34;
+    outline: #838da6;
+    margin: 0 5px;
+    min-width: calc(100% - 45px);
+    transition: all 0.3s ease;
+}
+
+.input[type='text']:focus {
+    background: #f0f5ff;
+ }
+
+.input[type='radio'] {
+    display: none;
+}
+
+.input[type='radio'] + label {
+    transition: all 0.3s ease;
+    border: 1px solid white;
+    padding: 7px 12px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.input[type='radio']:checked + label {
+    border: 1px solid #282c34;
+    border-radius: 5px;
+}

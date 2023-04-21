@@ -1,14 +1,20 @@
+import {Button} from "../ui/buttons";
+import './todo-item.css'
+
 export const TodoItem = ({item, handleChange, handleDelete, handleEdit, provided}) => {
     return <li  {...provided.draggableProps}
                 {...provided.dragHandleProps}
-                ref={provided.innerRef}>
+                ref={provided.innerRef}
+    className='list-item'>
         <input
             type="checkbox"
             checked={item.completed}
             onChange={handleChange}
         />
         {item.task}
-        <button onClick={handleEdit}> edit </button>
-        <button onClick={handleDelete}> delete </button>
+        <div className='action-buttons'>
+            <Button onClick={handleEdit}> edit </Button>
+            <Button onClick={handleDelete}> delete </Button>
+        </div>
     </li>
 }

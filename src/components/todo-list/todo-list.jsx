@@ -1,6 +1,7 @@
 import {TodoItem} from "../todo-item";
 import {DragDropContext, Draggable} from "react-beautiful-dnd";
 import {StrictModeDroppable} from "../ui/strict-mode-droppable";
+import './todo-list.css'
 
 export const TodoList = ({todoItems, setTodoItems, completedOnly, uncompletedOnly, handleEdit}) => {
     const handleChange = (index) => {
@@ -40,7 +41,7 @@ export const TodoList = ({todoItems, setTodoItems, completedOnly, uncompletedOnl
     return <DragDropContext onDragEnd={onDragEnd}>
         <StrictModeDroppable droppableId="todoItems">
             {(provided) => (
-                <ul {...provided.droppableProps} ref={provided.innerRef}>
+                <ul {...provided.droppableProps} ref={provided.innerRef} className='list-container'>
                     {/*key here isn't the best solution, ideally I'd use something like uuid*/}
                     {!completedOnly && !uncompletedOnly && todoItems.map((item, index) => generateTodoItem(item, index))}
                     {completedOnly && todoItems.map((item, index) => item.completed && generateTodoItem(item, index))}

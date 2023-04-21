@@ -1,9 +1,13 @@
 import {useEffect, useRef, useState} from "react";
 import {TodoList} from "../todo-list";
+import {Button} from "../ui/buttons";
+import {Input} from "../ui/inputs";
+import './todo-form.css'
 
 export const TodoForm = () => {
     const todoInputName = 'task';
     const localStorageName = 'todoItems';
+    const filterRadiobuttonName = 'filter';
     const [todoItems, setTodoItems] = useState(extractListFromLocalStorage);
     const [completedOnly, setCompletedOnly] = useState(false);
     const [uncompletedOnly, setUncompletedOnly] = useState(false);
@@ -53,37 +57,40 @@ export const TodoForm = () => {
         todoInput.current.focus()
     }
 
-    const showCompletedOnly = () => {
-        setCompletedOnly(true);
-        setUncompletedOnly(false);
+    const handleFilter = (e) => {
+        switch (e.target.value) {
+                case 'completed': setCompletedOnly(true);
+                    setUncompletedOnly(false);
+                break;
+                case 'uncompleted': setUncompletedOnly(true);
+                    setCompletedOnly(false);
+                break;
+            default: setUncompletedOnly(false);
+                setCompletedOnly(false);
+                break;
+        }
     }
 
-    const showUncompletedOnly = () => {
-        setUncompletedOnly(true);
-        setCompletedOnly(false);
-    }
-
-    const showAllTasks = () => {
-        setUncompletedOnly(false);
-        setCompletedOnly(false);
-    }
-
-    return <>
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Enter task" name={todoInputName} ref={todoInput}
+    return <div className='container'>
+        <form onSubmit={handleSubmit} className='form'>
+            <Input type="text" placeholder="Enter task" name={todoInputName} innerRef={todoInput}
                    value={inputValue}
                    onChange={(e) => setInputValue(e.target.value)}/>
-            <button>Add</button>
+            <Button>+</Button>
         </form>
-        <div>
-            <button onClick={showCompletedOnly}>Show completed only</button>
-            <button onClick={showUncompletedOnly}>Show uncompleted only</button>
-            <button onClick={showAllTasks}>Show all tasks</button>
+        <div onChange={handleFilter} className='radiobuttons'>
+            <Input type="radio" value={'all'} name={filterRadiobuttonName} id={'all'}/>
+            <label htmlFor="all">all</label>
+            <Input type="radio" value={'completed'} name={filterRadiobuttonName} id='completed'/>
+            <label htmlFor="completed">completed</label>
+            <Input type="radio" value={'uncompleted'} name={filterRadiobuttonName} id='uncompleted'/>
+            <label htmlFor="uncompleted">uncompleted</label>
         </div>
         <TodoList todoItems={todoItems}
                   setTodoItems={setTodoItems}
                   completedOnly={completedOnly}
                   uncompletedOnly={uncompletedOnly}
-                  handleEdit={handleEdit}/>
-    </>
+                  handleEdit={handleEdit}
+        />
+    </div>
 }

@@ -1,0 +1,13 @@
+.list-item {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.list-item input {
+    margin-right: 10px;
+}
+
+.action-buttons {
+    margin-left: auto;
+}
