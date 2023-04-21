@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {TodoList} from "../todo-list";
 
 export const TodoForm = () => {
@@ -6,17 +6,39 @@ export const TodoForm = () => {
     const [todoItems, setTodoItems] = useState([]);
     const [completedOnly, setCompletedOnly] = useState(false);
     const [uncompletedOnly, setUncompletedOnly] = useState(false);
+    const [isEdited, setIsEdited] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+    const [index, setIndex] = useState();
+    const todoInput = useRef();
 
-   const handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         const task = event.target.elements[todoInputName].value;
 
-        if (task) {
+        if (isEdited) {
+            const newTodoItems = todoItems.map((item, i) => {
+                if (i === Number(index)) {
+                    item.task = task
+                }
+                return item;
+            });
+            setTodoItems(newTodoItems);
+            setInputValue('');
+        }
+
+        if (task && !isEdited) {
             setTodoItems((prevState) => [...prevState, {task: task, completed: false}]);
 
-            event.target.elements[todoInputName].value = '';
+            setInputValue('');
         }
+    }
+
+    const handleEdit = (index) => {
+        setIsEdited(true);
+        setIndex(index);
+        setInputValue(todoItems[index].task);
+        todoInput.current.focus()
     }
 
     const showCompletedOnly = () => {
@@ -36,9 +58,11 @@ export const TodoForm = () => {
 
     return <>
         <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Enter task" name={todoInputName} />
-        <button>Add</button>
-    </form>
+            <input type="text" placeholder="Enter task" name={todoInputName} ref={todoInput}
+                   value={inputValue}
+                   onChange={(e) => setInputValue(e.target.value)}/>
+            <button>Add</button>
+        </form>
         <div>
             <button onClick={showCompletedOnly}>Show completed only</button>
             <button onClick={showUncompletedOnly}>Show uncompleted only</button>
@@ -47,6 +71,7 @@ export const TodoForm = () => {
         <TodoList todoItems={todoItems}
                   setTodoItems={setTodoItems}
                   completedOnly={completedOnly}
-                  uncompletedOnly={uncompletedOnly}/>
+                  uncompletedOnly={uncompletedOnly}
+                  handleEdit={handleEdit}/>
     </>
 }

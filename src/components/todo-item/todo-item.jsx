@@ -1,4 +1,4 @@
-export const TodoItem = ({item, handleChange, handleDelete}) => {
+export const TodoItem = ({item, handleChange, handleDelete, handleEdit}) => {
     return <li>
         <input
             type="checkbox"
@@ -6,6 +6,7 @@ export const TodoItem = ({item, handleChange, handleDelete}) => {
             onChange={handleChange}
         />
         {item.task}
-    <button onClick={handleDelete}> delete </button>
+        <button onClick={handleEdit}> edit </button>
+        <button onClick={handleDelete}> delete </button>
     </li>
 }

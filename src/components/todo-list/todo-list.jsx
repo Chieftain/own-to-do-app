@@ -1,7 +1,7 @@
 import {TodoItem} from "../todo-item";
 import {useId} from "react";
 
-export const TodoList = ({todoItems, setTodoItems, completedOnly, uncompletedOnly}) => {
+export const TodoList = ({todoItems, setTodoItems, completedOnly, uncompletedOnly, handleEdit}) => {
     const id = useId();
 
     const handleChange = (index) => {
@@ -19,6 +19,7 @@ export const TodoList = ({todoItems, setTodoItems, completedOnly, uncompletedOnl
     const generateTodoItem = (item, index) => <TodoItem key={`${id}-${index}`} item={item} index={index}
                                              handleChange={() => handleChange(index)}
                                              handleDelete={() => deleteItem(index)}
+                                                        handleEdit={() => handleEdit(index)}
     />
 
     return <ul>
