@@ -1,15 +1,26 @@
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {TodoList} from "../todo-list";
 
 export const TodoForm = () => {
     const todoInputName = 'task';
-    const [todoItems, setTodoItems] = useState([]);
+    const localStorageName = 'todoItems';
+    const [todoItems, setTodoItems] = useState(extractListFromLocalStorage);
     const [completedOnly, setCompletedOnly] = useState(false);
     const [uncompletedOnly, setUncompletedOnly] = useState(false);
     const [isEdited, setIsEdited] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const [index, setIndex] = useState();
     const todoInput = useRef();
+
+    useEffect(() => {
+        localStorage.setItem(localStorageName, JSON.stringify(todoItems));
+    }, [todoItems]);
+
+    function extractListFromLocalStorage () {
+        const saved = localStorage.getItem(localStorageName);
+        const initialValue = JSON.parse(saved);
+        return initialValue || [];
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
