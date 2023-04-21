@@ -4,10 +4,16 @@
     align-items: center;
 }
 
+.list-text {
+    min-width: calc(100% - 115px);
+    display: flex;
+}
+
 .list-item input {
     margin-right: 10px;
 }
 
 .action-buttons {
     margin-left: auto;
+    display: flex;
 }

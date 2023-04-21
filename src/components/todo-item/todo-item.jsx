@@ -6,12 +6,13 @@ export const TodoItem = ({item, handleChange, handleDelete, handleEdit, provided
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}
     className='list-item'>
-        <input
+        <div className='list-text'>
+            <input
             type="checkbox"
             checked={item.completed}
             onChange={handleChange}
         />
-        {item.task}
+            {item.task}</div>
         <div className='action-buttons'>
             <Button onClick={handleEdit}> edit </Button>
             <Button onClick={handleDelete}> delete </Button>

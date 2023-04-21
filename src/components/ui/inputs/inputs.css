@@ -4,7 +4,7 @@
     border-bottom: 1px solid #282c34;
     outline: #838da6;
     margin: 0 5px;
-    min-width: calc(100% - 45px);
+    width: calc(100% - 45px);
     transition: all 0.3s ease;
 }
 
