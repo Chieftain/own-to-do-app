@@ -79,7 +79,7 @@ export const TodoForm = () => {
             <Button>+</Button>
         </form>
         <div onChange={handleFilter} className='radiobuttons'>
-            <Input type="radio" value={'all'} name={filterRadiobuttonName} id={'all'}/>
+            <Input type="radio" value={'all'} name={filterRadiobuttonName} id='all'/>
             <label htmlFor="all">all</label>
             <Input type="radio" value={'completed'} name={filterRadiobuttonName} id='completed'/>
             <label htmlFor="completed">completed</label>

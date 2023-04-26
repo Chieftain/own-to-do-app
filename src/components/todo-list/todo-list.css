@@ -5,3 +5,16 @@
     flex-direction: column;
     padding: 0;
 }
+
+.empty-list {
+    font-size: 2em;
+    color: white;
+    background: #282c34;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}

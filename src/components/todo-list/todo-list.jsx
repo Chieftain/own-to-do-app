@@ -38,11 +38,14 @@ export const TodoList = ({todoItems, setTodoItems, completedOnly, uncompletedOnl
                 />)}
         </Draggable>
 
-    return <DragDropContext onDragEnd={onDragEnd}>
+    const generateEmptyList = () => <div className={'empty-list'}><p>there are no tasks yet</p></div>
+
+    return <>
+        {todoItems.length < 1 && generateEmptyList()}
+    <DragDropContext onDragEnd={onDragEnd}>
         <StrictModeDroppable droppableId="todoItems">
             {(provided) => (
                 <ul {...provided.droppableProps} ref={provided.innerRef} className='list-container'>
-                    {/*key here isn't the best solution, ideally I'd use something like uuid*/}
                     {!completedOnly && !uncompletedOnly && todoItems.map((item, index) => generateTodoItem(item, index))}
                     {completedOnly && todoItems.map((item, index) => item.completed && generateTodoItem(item, index))}
                     {uncompletedOnly && todoItems.map((item, index) => !item.completed && generateTodoItem(item, index))}
@@ -51,4 +54,5 @@ export const TodoList = ({todoItems, setTodoItems, completedOnly, uncompletedOnl
             )}
         </StrictModeDroppable>
     </DragDropContext>
+    </>
 }
