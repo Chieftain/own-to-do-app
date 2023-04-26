@@ -5,14 +5,14 @@ export const TodoItem = ({item, handleChange, handleDelete, handleEdit, provided
     return <li  {...provided.draggableProps}
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}
-    className='list-item'>
+                className='list-item'>
         <div className='list-text'>
             <input
-            type="checkbox"
-            checked={item.completed}
-            onChange={handleChange}
-        />
-            {item.task}</div>
+                type="checkbox"
+                checked={item.completed}
+                onChange={handleChange}
+            />
+            <span>{item.task}</span></div>
         <div className='action-buttons'>
             <Button onClick={handleEdit}> edit </Button>
             <Button onClick={handleDelete}> delete </Button>

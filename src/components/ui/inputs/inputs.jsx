@@ -1,5 +1,5 @@
 import './inputs.css'
 
-export const Input = (props) => {
-    return <input className={'input'} ref={props?.innerRef} {...props}/>
+export const Input = ({ innerRef, ...props }) => {
+    return <input className={'input'} ref={innerRef} {...props}/>
 }
