@@ -20,7 +20,7 @@ export const TodoForm = () => {
         localStorage.setItem(localStorageName, JSON.stringify(todoItems));
     }, [todoItems]);
 
-    function extractListFromLocalStorage () {
+    function extractListFromLocalStorage() {
         const saved = localStorage.getItem(localStorageName);
         const initialValue = JSON.parse(saved);
         return initialValue || [];
@@ -59,13 +59,16 @@ export const TodoForm = () => {
 
     const handleFilter = (e) => {
         switch (e.target.value) {
-                case 'completed': setCompletedOnly(true);
-                    setUncompletedOnly(false);
+            case 'completed':
+                setCompletedOnly(true);
+                setUncompletedOnly(false);
                 break;
-                case 'uncompleted': setUncompletedOnly(true);
-                    setCompletedOnly(false);
+            case 'uncompleted':
+                setUncompletedOnly(true);
+                setCompletedOnly(false);
                 break;
-            default: setUncompletedOnly(false);
+            default:
+                setUncompletedOnly(false);
                 setCompletedOnly(false);
                 break;
         }
@@ -79,11 +82,12 @@ export const TodoForm = () => {
             <Button>+</Button>
         </form>
         <div onChange={handleFilter} className='radiobuttons'>
-            <Input type="radio" value={'all'} name={filterRadiobuttonName} id='all'/>
+            <Input type="radio" value='all' name={filterRadiobuttonName} id='all'
+                   defaultChecked={!completedOnly && !uncompletedOnly}/>
             <label htmlFor="all">all</label>
-            <Input type="radio" value={'completed'} name={filterRadiobuttonName} id='completed'/>
+            <Input type="radio" value='completed' name={filterRadiobuttonName} id='completed'/>
             <label htmlFor="completed">completed</label>
-            <Input type="radio" value={'uncompleted'} name={filterRadiobuttonName} id='uncompleted'/>
+            <Input type="radio" value='uncompleted' name={filterRadiobuttonName} id='uncompleted'/>
             <label htmlFor="uncompleted">uncompleted</label>
         </div>
         <TodoList todoItems={todoItems}
