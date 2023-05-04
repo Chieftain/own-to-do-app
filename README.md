@@ -6,6 +6,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 https://codesandbox.io/p/github/Chieftain/own-to-do-app/master?layout=%257B%2522activeFilepath%2522%253A%2522%252FREADME.md%2522%252C%2522openFiles%2522%253A%255B%2522%252FREADME.md%2522%255D%252C%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522gitSidebarPanel%2522%253A%2522COMMIT%2522%252C%2522fullScreenDevtools%2522%253Afalse%252C%2522rootPanelGroup%2522%253A%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522panelType%2522%253A%2522TABS%2522%252C%2522id%2522%253A%2522clgr76do500713b6l74aa20nz%2522%257D%255D%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522DEVTOOLS_PANELS%2522%257D%252C%2522tabbedPanels%2522%253A%257B%2522clgr76do500713b6l74aa20nz%2522%253A%257B%2522id%2522%253A%2522clgr76do500713b6l74aa20nz%2522%252C%2522activeTabId%2522%253A%2522clgr76gl900ai3b6lyi1j963t%2522%252C%2522tabs%2522%253A%255B%257B%2522id%2522%253A%2522clgr76do500703b6lhbi5uz3m%2522%252C%2522type%2522%253A%2522TASK_LOG%2522%252C%2522taskId%2522%253A%2522start%2522%257D%252C%257B%2522type%2522%253A%2522TASK_PORT%2522%252C%2522taskId%2522%253A%2522start%2522%252C%2522port%2522%253A3000%252C%2522id%2522%253A%2522clgr76gl900ai3b6lyi1j963t%2522%252C%2522path%2522%253A%2522%252F%2522%257D%255D%257D%257D%252C%2522showSidebar%2522%253Atrue%252C%2522showDevtools%2522%253Atrue%252C%2522sidebarPanelSize%2522%253A15%252C%2522editorPanelSize%2522%253A41.66666666666667%252C%2522devtoolsPanelSize%2522%253A43.33333333333333%257D
 
+## Description:
+
+- The application is built using React.
+- Users are able to add new tasks to the list.
+- Users are able to remove tasks from the list.
+- Users are able to mark tasks as complete or incomplete.
+- Users are able to filter the list of tasks by their completion status (i.e. show only completed tasks or only incomplete tasks).
+- The application is responsive and work on desktop and mobile devices.
+- Users are able to edit the text of a task after it has been added to the list.
+- Users are able to reorder tasks in the list using drag-and-drop.
+- The list of tasks is persisted in local storage.
+
 ## Available Scripts
 
 In the project directory, you can run:
